@@ -42,9 +42,9 @@
       }
       h1 {
         margin: 0;
-        font-family: inherit;
+        font-family: ui-rounded, "SF Pro Rounded", -apple-system, BlinkMacSystemFont, sans-serif;
         font-size: clamp(46px, 8vw, 68px);
-        font-weight: 600;
+        font-weight: 700;
         line-height: 1.1;
         letter-spacing: -0.025em;
         color: #f06992;
@@ -222,6 +222,32 @@
         .feature-row:nth-child(2) .feature-visual { order: initial; }
         .watch-preview { margin-top: 4px; }
       }
+      .free-note {
+        width: min(100%, 960px);
+        padding: 40px 24px 8px;
+        border-top: 1px solid #ffffff12;
+        text-align: center;
+      }
+      .free-note h2 {
+        margin: 0;
+        color: #f06992;
+        font-size: clamp(28px, 4vw, 36px);
+        font-weight: 600;
+        letter-spacing: -0.025em;
+      }
+      .free-note p {
+        max-width: 400px;
+        margin: 12px auto 0;
+        font-size: 16px;
+        line-height: 1.7;
+        text-wrap: pretty;
+      }
+      .footer-heart {
+        margin-bottom: 24px;
+        color: #f06992;
+        font-size: 20px;
+        line-height: 1;
+      }
       footer {
         padding: 0 24px max(24px, env(safe-area-inset-bottom));
         text-align: center;
@@ -336,8 +362,15 @@
           </figure>
         </article>
       </section>
+      <section class="free-note" aria-labelledby="free-title">
+        <h2 id="free-title">Everything is free.</h2>
+        <p>Every feature is included. No subscriptions, in-app purchases or ads. Babies are expensive enough as it is.</p>
+      </section>
     </main>
-    <footer>Made by <a href="https://emile.nl" target="_blank" rel="noopener noreferrer">Emile</a> for Mandy ❤</footer>
+    <footer>
+      <div class="footer-heart" aria-hidden="true">❤</div>
+      Made by <a href="https://emile.nl" target="_blank" rel="noopener noreferrer">Emile</a> for Mandy
+    </footer>
     <dialog id="review-notice" aria-labelledby="review-title" aria-describedby="review-message">
       <h2 id="review-title">Coming soon</h2>
       <p id="review-message">We’re waiting for Apple’s review.<br>Please check back soon!</p>
