@@ -99,33 +99,128 @@
         background: #100d0e;
         box-shadow: 0 24px 80px #0006;
       }
-      .features {
+      .app-store { gap: 10px; }
+      .app-store svg { width: 22px; height: 24px; flex-shrink: 0; }
+      .features { width: min(100%, 960px); padding-top: 16px; }
+      .feature-row {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 32px;
-        width: min(100%, 780px);
-        padding-top: 32px;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        align-items: center;
+        gap: 64px;
+        padding: 64px 8px;
         border-top: 1px solid #ffffff12;
-        text-align: center;
       }
-      .features svg {
-        width: 34px;
-        height: 34px;
-        margin-bottom: 14px;
+      .feature-copy { max-width: 400px; }
+      .feature-label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 16px;
         color: #f06992;
-      }
-      .features h2 {
-        margin: 0 0 8px;
-        color: #efe4e8;
-        font-size: 18px;
+        font-size: 14px;
         font-weight: 600;
-        letter-spacing: -0.02em;
       }
-      .features p { margin: 0; font-size: 14px; line-height: 1.65; }
-      @media (max-width: 620px) {
-        .features { grid-template-columns: 1fr; gap: 28px; max-width: 360px; text-align: left; }
-        .features article { display: grid; grid-template-columns: 34px 1fr; gap: 18px; }
-        .features svg { margin: 2px 0 0; }
+      .feature-label svg { width: 24px; height: 24px; flex-shrink: 0; }
+      .feature-copy h2 {
+        margin: 0 0 18px;
+        color: #efe4e8;
+        font-family: ui-rounded, "SF Pro Rounded", -apple-system, BlinkMacSystemFont, sans-serif;
+        font-size: clamp(28px, 4vw, 36px);
+        font-weight: 700;
+        line-height: 1.15;
+        letter-spacing: -0.035em;
+        text-wrap: balance;
+      }
+      .feature-copy p { margin: 0; font-size: 16px; line-height: 1.75; text-wrap: pretty; }
+      .feature-copy p + p { margin-top: 14px; }
+      .feature-visual { margin: 0; min-width: 0; }
+      .screen-detail {
+        overflow: hidden;
+        border-radius: 26px;
+        border: 1px solid #ffffff14;
+        background: #171214;
+        box-shadow: 0 24px 64px #0004;
+      }
+      .screen-detail img { display: block; width: 100%; height: 100%; object-fit: cover; }
+      .sharing-preview { aspect-ratio: 1.6; }
+      .sharing-preview img { object-position: center 23%; }
+      .activity-preview { aspect-ratio: 4 / 3; }
+      .activity-preview img { object-position: center 90%; }
+      .feature-row:nth-child(2) .feature-copy { order: 2; }
+      .feature-row:nth-child(2) .feature-visual { order: 1; }
+      .watch-preview {
+        position: relative;
+        isolation: isolate;
+        width: 296px;
+        max-width: 100%;
+        height: 430px;
+        margin: 0 auto;
+      }
+      .watch-band {
+        position: absolute;
+        inset: 0 66px;
+        border-radius: 34px;
+        border: 1px solid #9c65792b;
+        background: linear-gradient(90deg, #3d2830, #71505c 16%, #634450 80%, #35232b);
+        box-shadow: inset 0 0 14px #0005;
+      }
+      .watch-band::after {
+        content: "";
+        position: absolute;
+        bottom: 12px;
+        left: calc(50% - 3px);
+        width: 6px;
+        height: 36px;
+        background: radial-gradient(ellipse, #23191e 50%, transparent 60%) center / 6px 12px;
+      }
+      .watch-case {
+        position: absolute;
+        top: 66px;
+        left: 21px;
+        width: calc(100% - 42px);
+        padding: 10px;
+        border: 1px solid #a39b97;
+        border-radius: 58px;
+        background: linear-gradient(120deg, #a09c98, #53514f 16%, #272524 45%, #77736f 80%, #aaa39d);
+        box-shadow: inset 0 0 0 2px #272524, 0 18px 34px #0007;
+      }
+      .watch-screen {
+        position: relative;
+        overflow: hidden;
+        border: 4px solid #080707;
+        border-radius: 47px;
+        background: #080707;
+        box-shadow: 0 0 0 1px #000;
+      }
+      .watch-screen img { display: block; width: 100%; height: auto; }
+      .watch-crown {
+        position: absolute;
+        right: -11px;
+        top: 66px;
+        width: 14px;
+        height: 39px;
+        border: 1px solid #797571;
+        border-radius: 5px;
+        background: repeating-linear-gradient(0deg, #4a4643 0 2px, #93908c 2px 3px);
+        z-index: -1;
+      }
+      .watch-button {
+        position: absolute;
+        right: -5px;
+        top: 132px;
+        width: 5px;
+        height: 55px;
+        border-radius: 3px;
+        background: #827d78;
+        z-index: -1;
+      }
+      @media (max-width: 700px) {
+        .features { max-width: 440px; padding-top: 0; }
+        .feature-row { grid-template-columns: 1fr; gap: 30px; padding: 44px 0; }
+        .feature-copy { max-width: none; }
+        .feature-row:nth-child(2) .feature-copy,
+        .feature-row:nth-child(2) .feature-visual { order: initial; }
+        .watch-preview { margin-top: 4px; }
       }
       footer {
         padding: 0 24px max(24px, env(safe-area-inset-bottom));
@@ -185,40 +280,60 @@
         <h1>BreastFeed</h1>
         <p class="tagline">One less thing to remember.</p>
         <p class="why">Remember the last feed and which side is next. Log breastfeeding, bottles and pumping in one simple journal, shared with your partner.</p>
-        <a class="app-store" id="app-store" href="https://apps.apple.com/app/id6829426046" aria-haspopup="dialog">Download on the App Store</a>
+        <a class="app-store" id="app-store" href="https://apps.apple.com/app/id6829426046" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><span>Download on the App Store</span></a>
       </header>
       <video autoplay muted loop playsinline controls preload="metadata" poster="assets/poster.jpg" aria-label="BreastFeed app screencast">
         <source src="assets/screencast.mp4" type="video/mp4">
       </video>
       <section class="features" aria-label="Features">
-        <article>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M7 18H6a4 4 0 0 1-.5-7.97A6.5 6.5 0 0 1 18 9h.5a4.5 4.5 0 0 1 0 9H7Z"/>
-          </svg>
-          <div>
-            <h2>iCloud Sharing</h2>
-            <p>One journal for both of you. Log and edit feeds together.</p>
+        <article class="feature-row" aria-labelledby="sharing-title">
+          <div class="feature-copy">
+            <div class="feature-label">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18H6a4 4 0 0 1-.5-7.97A6.5 6.5 0 0 1 18 9h.5a4.5 4.5 0 0 1 0 9H7Z"/></svg>
+              iCloud Sharing
+            </div>
+            <h2 id="sharing-title">Share the night shift.</h2>
+            <p>Invite your partner to your baby’s journal through iCloud. You can both add and edit feeds, so whoever takes over knows when the last feed happened.</p>
+            <p>One shared history. No separate account to create.</p>
           </div>
+          <figure class="feature-visual screen-detail sharing-preview">
+            <img src="assets/sharing.png" width="1320" height="2868" loading="lazy" alt="Cosmo’s journal with an Invite Partner option for sharing feeds through iCloud.">
+          </figure>
         </article>
-        <article>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="2" y="6" width="20" height="12" rx="5"/>
-            <path d="M6 12h2l2-3 3 6 2-3h3"/>
-          </svg>
-          <div>
-            <h2>Live Activities</h2>
-            <p>Keep the feeding timer in view on your Lock Screen.</p>
+        <article class="feature-row" aria-labelledby="activity-title">
+          <div class="feature-copy">
+            <div class="feature-label">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="5"/><path d="M6 12h2l2-3 3 6 2-3h3"/></svg>
+              Live Activities
+            </div>
+            <h2 id="activity-title">A glance is all it takes.</h2>
+            <p>Keep the feeding timer and current side on your Lock Screen. Finish a feed or switch sides right from the Live Activity, without reopening the app.</p>
+            <p>Less tapping when your hands are full.</p>
           </div>
+          <figure class="feature-visual screen-detail activity-preview">
+            <img src="assets/live-activity.jpg" width="1320" height="2868" loading="lazy" alt="An iPhone Lock Screen Live Activity showing Cosmo’s left-breast timer, with Done and Switch to Right buttons.">
+          </figure>
         </article>
-        <article>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="6" y="5" width="12" height="14" rx="4"/>
-            <path d="M9 5V2h6v3M9 19v3h6v-3M12 9v3l2 1.5"/>
-          </svg>
-          <div>
-            <h2>Apple Watch</h2>
-            <p>Log a feed right from your wrist.</p>
+        <article class="feature-row" aria-labelledby="watch-title">
+          <div class="feature-copy">
+            <div class="feature-label">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="5" width="12" height="14" rx="4"/><path d="M9 5V2h6v3M9 19v3h6v-3M12 9v3l2 1.5"/></svg>
+              Apple Watch
+            </div>
+            <h2 id="watch-title">Right there on your wrist.</h2>
+            <p>Start a left or right feed, log a bottle, or record pumping from Apple Watch. Pick your baby and keep the journal up to date without reaching for your iPhone.</p>
+            <p>Big buttons. A few quick taps.</p>
           </div>
+          <figure class="feature-visual watch-preview">
+            <div class="watch-band" aria-hidden="true"></div>
+            <div class="watch-case">
+              <span class="watch-crown" aria-hidden="true"></span>
+              <span class="watch-button" aria-hidden="true"></span>
+              <div class="watch-screen">
+                <img src="assets/watch.png" width="416" height="496" loading="lazy" alt="BreastFeed on Apple Watch, showing Cosmo’s baby picker and large Left, Right and Bottle buttons.">
+              </div>
+            </div>
+          </figure>
         </article>
       </section>
     </main>
