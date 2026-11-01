@@ -20,16 +20,77 @@
         min-height: 100svh;
         display: grid;
         grid-template-rows: 1fr auto;
-        background: radial-gradient(ellipse at 50% 42%, #f069920b, transparent 65%);
+        background: radial-gradient(ellipse 650px 600px at 50% 180px, #f0699212, transparent 75%);
       }
       main {
-        display: grid;
-        place-items: center;
-        padding: 28px 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 48px;
+        padding: 64px 24px 48px;
+      }
+      .intro {
+        width: min(100%, 560px);
+        text-align: center;
+      }
+      .app-icon {
+        display: block;
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 18px;
+        filter: drop-shadow(0 10px 24px #0003);
+      }
+      h1 {
+        margin: 0;
+        font-family: ui-rounded, "SF Pro Rounded", -apple-system, BlinkMacSystemFont, sans-serif;
+        font-size: clamp(46px, 8vw, 68px);
+        font-weight: 800;
+        line-height: 1.1;
+        letter-spacing: -0.055em;
+        color: #f06992;
+        background: linear-gradient(110deg, #ffc4d4 0%, #f06992 55%, #e84a80 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .tagline {
+        margin: 22px 0 10px;
+        color: #efe4e8;
+        font-size: 22px;
+        font-weight: 600;
+        letter-spacing: -0.025em;
+      }
+      .why {
+        max-width: 420px;
+        margin: 0 auto;
+        font-size: 16px;
+        line-height: 1.65;
+        text-wrap: pretty;
+      }
+      .app-store {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 52px;
+        margin-top: 26px;
+        padding: 14px 24px;
+        border: 1px solid #ffffff29;
+        border-radius: 14px;
+        background: #080708;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: border-color 150ms ease, background 150ms ease;
+      }
+      .app-store:hover {
+        border-color: #f06992;
+        background: #21151b;
+        color: #fff;
       }
       video {
         display: block;
-        height: min(78svh, 760px);
+        height: min(76svh, 700px);
         max-width: 100%;
         aspect-ratio: 201 / 437;
         object-fit: contain;
@@ -55,20 +116,64 @@
         outline-offset: 5px;
         border-radius: 2px;
       }
+      dialog {
+        width: min(360px, calc(100% - 40px));
+        padding: 28px;
+        border: 1px solid #ffffff21;
+        border-radius: 22px;
+        background: #21191d;
+        color: #efe4e8;
+        text-align: center;
+        box-shadow: 0 24px 80px #0008;
+      }
+      dialog::backdrop { background: #0009; backdrop-filter: blur(5px); }
+      dialog h2 { margin: 0 0 12px; font-size: 22px; }
+      dialog p { margin: 0; color: #c0afb6; line-height: 1.6; }
+      dialog button {
+        width: 100%;
+        margin-top: 24px;
+        padding: 12px 20px;
+        border: 0;
+        border-radius: 12px;
+        background: #f06992;
+        color: #160d11;
+        font: inherit;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      dialog button:focus-visible { outline: 2px solid #ffc4d4; outline-offset: 4px; }
       @media (max-width: 480px) {
-        main { padding: 20px 20px 24px; }
+        main { gap: 36px; padding: 36px 20px; }
+        .app-icon { width: 68px; height: 68px; }
+        .tagline { font-size: 21px; }
         video { border-radius: 30px; }
       }
     </style>
   </head>
   <body>
     <main>
+      <header class="intro">
+        <img class="app-icon" src="assets/app-icon.png" width="80" height="80" alt="BreastFeed app icon">
+        <h1>BreastFeed</h1>
+        <p class="tagline">One less thing to remember.</p>
+        <p class="why">Remember the last feed and which side is next. Log breastfeeding, bottles and pumping in one simple journal, shared with your partner.</p>
+        <a class="app-store" id="app-store" href="https://apps.apple.com/app/id6829426046" aria-haspopup="dialog">Download on the App Store</a>
+      </header>
       <video autoplay muted loop playsinline controls preload="metadata" poster="assets/poster.jpg" aria-label="BreastFeed app screencast">
         <source src="assets/screencast.mp4" type="video/mp4">
       </video>
     </main>
     <footer>Made by <a href="https://emile.nl" target="_blank" rel="noopener noreferrer">Emile Nijssen</a></footer>
+    <dialog id="review-notice" aria-labelledby="review-title" aria-describedby="review-message">
+      <h2 id="review-title">Coming soon</h2>
+      <p id="review-message">We’re waiting for Apple’s review.<br>Please check back soon!</p>
+      <form method="dialog"><button>OK</button></form>
+    </dialog>
     <script>
+      document.querySelector('#app-store').addEventListener('click', (event) => {
+        event.preventDefault();
+        document.querySelector('#review-notice').showModal();
+      });
       const video = document.querySelector('video');
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
       if (reducedMotion.matches) {
