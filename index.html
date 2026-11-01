@@ -99,6 +99,34 @@
         background: #100d0e;
         box-shadow: 0 24px 80px #0006;
       }
+      .features {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+        width: min(100%, 780px);
+        padding-top: 32px;
+        border-top: 1px solid #ffffff12;
+        text-align: center;
+      }
+      .features svg {
+        width: 34px;
+        height: 34px;
+        margin-bottom: 14px;
+        color: #f06992;
+      }
+      .features h2 {
+        margin: 0 0 8px;
+        color: #efe4e8;
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+      }
+      .features p { margin: 0; font-size: 14px; line-height: 1.65; }
+      @media (max-width: 620px) {
+        .features { grid-template-columns: 1fr; gap: 28px; max-width: 360px; text-align: left; }
+        .features article { display: grid; grid-template-columns: 34px 1fr; gap: 18px; }
+        .features svg { margin: 2px 0 0; }
+      }
       footer {
         padding: 0 24px max(24px, env(safe-area-inset-bottom));
         text-align: center;
@@ -162,6 +190,37 @@
       <video autoplay muted loop playsinline controls preload="metadata" poster="assets/poster.jpg" aria-label="BreastFeed app screencast">
         <source src="assets/screencast.mp4" type="video/mp4">
       </video>
+      <section class="features" aria-label="Features">
+        <article>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M7 18H6a4 4 0 0 1-.5-7.97A6.5 6.5 0 0 1 18 9h.5a4.5 4.5 0 0 1 0 9H7Z"/>
+          </svg>
+          <div>
+            <h2>iCloud Sharing</h2>
+            <p>One journal for both of you. Log and edit feeds together.</p>
+          </div>
+        </article>
+        <article>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="6" width="20" height="12" rx="5"/>
+            <path d="M6 12h2l2-3 3 6 2-3h3"/>
+          </svg>
+          <div>
+            <h2>Live Activities</h2>
+            <p>Keep the feeding timer in view on your Lock Screen.</p>
+          </div>
+        </article>
+        <article>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="6" y="5" width="12" height="14" rx="4"/>
+            <path d="M9 5V2h6v3M9 19v3h6v-3M12 9v3l2 1.5"/>
+          </svg>
+          <div>
+            <h2>Apple Watch</h2>
+            <p>Log a feed right from your wrist.</p>
+          </div>
+        </article>
+      </section>
     </main>
     <footer>Made by <a href="https://emile.nl" target="_blank" rel="noopener noreferrer">Emile Nijssen</a></footer>
     <dialog id="review-notice" aria-labelledby="review-title" aria-describedby="review-message">
