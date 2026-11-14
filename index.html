@@ -301,32 +301,6 @@
         outline-offset: 5px;
         border-radius: 2px;
       }
-      dialog {
-        width: min(360px, calc(100% - 40px));
-        padding: 28px;
-        border: 1px solid #ffffff21;
-        border-radius: 22px;
-        background: #21191d;
-        color: #efe4e8;
-        text-align: center;
-        box-shadow: 0 24px 80px #0008;
-      }
-      dialog::backdrop { background: #0009; backdrop-filter: blur(5px); }
-      dialog h2 { margin: 0 0 12px; font-size: 22px; }
-      dialog p { margin: 0; color: #c0afb6; line-height: 1.6; }
-      dialog button {
-        width: 100%;
-        margin-top: 24px;
-        padding: 12px 20px;
-        border: 0;
-        border-radius: 12px;
-        background: #f06992;
-        color: #160d11;
-        font: inherit;
-        font-weight: 600;
-        cursor: pointer;
-      }
-      dialog button:focus-visible { outline: 2px solid #ffc4d4; outline-offset: 4px; }
       @media (max-width: 480px) {
         main { gap: 36px; padding: 36px 20px; }
         .app-icon { width: 68px; height: 68px; }
@@ -342,7 +316,7 @@
         <h1>BreastFeed</h1>
         <p class="tagline">One less thing to remember.</p>
         <p class="why">Remember the last feed and which side is next. Log breastfeeding, bottles and pumping in one simple journal, shared with your partner.</p>
-        <a class="app-store" id="app-store" href="https://apps.apple.com/app/id6829426046" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><span>Download on the App Store</span></a>
+        <a class="app-store" id="app-store" href="https://testflight.apple.com/join/1vFaXyYN"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><span>Join the TestFlight Beta</span></a>
       </header>
       <video autoplay muted loop playsinline preload="metadata" poster="assets/poster.jpg" aria-label="BreastFeed app screencast">
         <source src="assets/screencast.mp4" type="video/mp4">
@@ -407,16 +381,7 @@
       <div class="footer-heart" aria-hidden="true">❤</div>
       Made by <a href="https://emile.nl" target="_blank" rel="noopener noreferrer">Emile</a> for Mandy
     </footer>
-    <dialog id="review-notice" aria-labelledby="review-title" aria-describedby="review-message">
-      <h2 id="review-title">Coming soon</h2>
-      <p id="review-message">We’re waiting for Apple’s review.<br>Please check back soon!</p>
-      <form method="dialog"><button>OK</button></form>
-    </dialog>
     <script>
-      document.querySelector('#app-store').addEventListener('click', (event) => {
-        event.preventDefault();
-        document.querySelector('#review-notice').showModal();
-      });
       const video = document.querySelector('video');
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
       if (reducedMotion.matches) {
